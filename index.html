@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mabar Yuk!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #121214, #1a1a2e);
+            color: #ffffff;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(30, 30, 46, 0.8);
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 0 25px rgba(0, 242, 254, 0.2);
+            border: 1px solid rgba(0, 242, 254, 0.1);
+            backdrop-filter: blur(10px);
+            max-width: 400px;
+            width: 90%;
+            transition: all 0.3s ease;
+        }
+
+        /* GIF atau Gambar */
+        .gif-container img {
+            width: 160px;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border: 2px solid #00f2fe;
+        }
+
+        h1 {
+            color: #00f2fe;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+        }
+
+        p {
+            color: #a0aec0;
+            font-size: 1rem;
+            margin-bottom: 30px;
+        }
+
+        /* Area Tombol */
+        .btn-group {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            height: 50px;
+        }
+
+        button {
+            padding: 12px 35px;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.1s, background-color 0.3s;
+        }
+
+        #btn-gass {
+            background: linear-gradient(45deg, #00f2fe, #4facfe);
+            color: #121214;
+            box-shadow: 0 5px 15px rgba(0, 242, 254, 0.4);
+        }
+
+        #btn-gass:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 20px rgba(0, 242, 254, 0.6);
+        }
+
+        #btn-gak {
+            background-color: #3f3f46;
+            color: #a1a1aa;
+            position: absolute;
+            left: 55%;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="gif-container">
+            <!-- Gambar bertema gaming/santai -->
+            <img id="display-img" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHI1Nms5Zm95ZnVwY3A0bno3ZXN4M3pxbXU0N3E5YWt5M3gzd3JpOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/deYvcCJJG3f3JnPx74/giphy.gif" alt="Gaming GIF">
+        </div>
+        <h1 id="question">Mabar kuy? 🎮</h1>
+        <p id="sub-text">Gak ada penolakan, ayo push rank atau seru-seruan!</p>
+
+        <div class="btn-group">
+            <button id="btn-gass" onclick="accepted()">Gasss!</button>
+            <button id="btn-gak" onmouseover="moveButton()" onclick="moveButton()">Gak</button>
+        </div>
+    </div>
+
+    <script>
+        const btnGak = document.getElementById('btn-gak');
+        const btnGass = document.getElementById('btn-gass');
+        const question = document.getElementById('question');
+        const subText = document.getElementById('sub-text');
+        const displayImg = document.getElementById('display-img');
+
+        // Fungsi membuat tombol 'Gak' menghindar
+        function moveButton() {
+            const x = Math.random() * (window.innerWidth - btnGak.clientWidth - 50);
+            const y = Math.random() * (window.innerHeight - btnGak.clientHeight - 50);
+            
+            btnGak.style.position = 'fixed';
+            btnGak.style.left = x + 'px';
+            btnGak.style.top = y + 'px';
+        }
+
+        // Fungsi ketika tombol 'Gasss!' diklik
+        function accepted() {
+            question.innerHTML = "Nah mantap! 🚀";
+            subText.innerHTML = "Buruan login, langsung gass otw room/lobby sekarang! 🤫🔥";
+            
+            // Mengubah GIF jadi mode selebrasi menang game
+            displayImg.src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnd2Mmt6dzNpN294cGkycHZsbnQwa2Zvdzh3NWh4MXR6NTh4eW12NCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/WfBZwNA6XSjfGKoJH4/giphy.gif";
+            
+            btnGak.style.display = 'none';
+            btnGass.innerHTML = "Let's Go!";
+            btnGass.onclick = null;
+        }
+    </script>
+</body>
+</html>
